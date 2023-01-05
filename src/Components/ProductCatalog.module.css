@@ -1,0 +1,55 @@
+.Container{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    padding: 10px;
+    width: 75%;
+
+
+}
+.Product{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 22%;
+    justify-content: space-between;
+    height: 410px;
+    padding-bottom: 5px;
+    
+}
+.title{
+    font-size: medium;
+    font-weight: 500;
+    align-self: flex-start;
+    margin-left: 5px;
+}
+.PriceDetails{
+    display: flex;
+    padding: 0px 5px;
+    justify-content: space-between;
+}
+.Purchase{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0px 5px ;
+}
+.Price{
+    color: black;
+    font-size: medium;
+    font-weight: 400;
+}
+.ActualPrice{
+    color: grey;
+    font-weight: 400;
+}
+.Discount{
+    color: red;
+    word-spacing: -2px;
+}
+.Rating{
+    background-color: yellow;
+    width: 12%;
+    padding: 2px;
+}

@@ -1,0 +1,14 @@
+.Banner{
+    background-image: url("../Media/image1.jpg");
+    background-size: cover;
+    width: 98%;
+    margin-top: 10px;
+    margin: 10px auto;
+    height: 70vh;
+    border: 1px solid black;
+    font-size: 3rem;
+    font-weight: 500;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}

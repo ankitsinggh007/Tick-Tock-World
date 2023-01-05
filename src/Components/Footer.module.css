@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    background: rgb(65,65,65);
+    color: aliceblue;
+
+
+}
+.newsLetter{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.field{
+    width: 60%;
+    height: 45px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.copyright{
+    align-self:flex-end;
+    margin-bottom: 20px;
+}
+.social{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+    width: 300px;
+}
+.cap{
+    font-size: 1.7em;
+
+}
+.icon{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.subscribe{
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 1.3em;
+    background-color: black;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin: 0px auto;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.label{
+    font-size: 1.2em;
+    margin-right:10px ;
+
+}

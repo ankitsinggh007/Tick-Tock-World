@@ -1,0 +1,23 @@
+.container{
+    color: aliceblue;
+    height: 10px;
+    display: flex;
+    width: 94%;
+    margin:auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    background: rgb(65,65,65);
+    
+}
+.items{
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+
+

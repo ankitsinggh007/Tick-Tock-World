@@ -1,0 +1,16 @@
+.head{
+    margin:20px;
+    /* text-align: center; */
+    font-size: 1.7em;
+}
+.Container{
+    height: 40vh;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.cat{
+    margin-left: 20px;
+    cursor: pointer;
+}
