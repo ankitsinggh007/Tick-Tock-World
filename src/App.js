@@ -9,111 +9,90 @@ import Navbar from "./Components/Navbar"
 import Main from "./Pages/Main";
 import Router from "./routes/Router";
 import { useNavigate } from "react-router-dom";
-
+import { createContext } from "react";
 import DataBase from "./Firebase"
 import { Password } from "@mui/icons-material";
+export const User=createContext({});
+
 function App() {
-    const [AllProduct, setAllProduct] = useState(products)
 
-    const Navigate=useNavigate();
+  const Navigate=useNavigate();
+  const [Creadential, setCreadential] = useState({fname:"",lname:"",email:"",Gender:"",Password:""});
+  const [LoggedInUserData, setLoggedInUserData] = useState({id:"",firstName:"",lastName:"",email:"",Gender:"",isAuthrized:false,Liked:[],Cart:[],isbpn:[],isbpn_Cart:[]});
 
-    const [Registration, setRegistration] = useState({
-      Firstname:"",
-      Lastname:"",
-      Gender:"",
-      Email:"",
-      Password:"",
-      Re_Password:"",
-
-    });
-    const [UserData, setUserData] = useState({
-      Firstname:"",
-      Email:"",
-      Wishlist:[],
-      Cart:[]
-    })
-    const [isAuthorized, setisAuthorized] = useState(false)
-    // Create user
     
- const auth = getAuth();
- //  Fetch Data
- const FetchData= async (email)=>{
-  console.log("hi iam in fetchData")
-   console.log(email,"email")
-   const citiesRef = collection(DataBase, "User");
-   const q = query(citiesRef, where("Email", "==", `${email}`));
-   console.log(q,"q");
-   const querySnapshot = await getDocs(q);
-   console.log(querySnapshot,"querySnapshot")
-   querySnapshot.forEach((doc) => {
-     console.log(doc.id, " => ", doc.data());
-     setUserData({...UserData,...doc.data(),id:doc.id});
-     setisAuthorized(true);
-
-   });
-
- }
- // Creat user in DataBase
-    const CreateUserInDataBase = async ()=>{
-      console.log(Registration,"Registration")
-     const DocRef= await addDoc(collection(DataBase,"User"),{
-     Email:Registration.Email,
-     Firstname:Registration.Firstname,
-     Lastname:Registration.Lastname,
-     Gender:Registration.Gender,
-   }); 
-   Navigate("/login")
-  }
+    // Create user
+    const auth = getAuth();
+    //  Fetch Data
+    const FetchData= async (email)=>{
+      console.log(email,"email")
+      const citiesRef = collection(DataBase, "User");
+      const q = query(citiesRef, where("email", "==", `${email}`));
+      console.log(q,"q");
+      const querySnapshot = await getDocs(q);
+      console.log(querySnapshot,"querySnapshot")
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        setLoggedInUserData({...LoggedInUserData,...doc.data(),isAuthrized:true,id:doc.id});
+      });
+    }
+    // Creat user in DataBase
+       const CreateUserInDataBase = async ()=>{
+        const DocRef= await addDoc(collection(DataBase,"User"),{
+        email:Creadential.email,
+        firstName:Creadential.fname,
+        lastName:Creadential.lname,
+        Gender:Creadential.Gender,
+      }); 
+      Navigate("/login")
+     }
+    // Create User
     const createUser=async (email,password)=>{
-      createUserWithEmailAndPassword(auth,email,password)
-     .then((userCredential) => {
-       const user = userCredential.user;
-       console.log(user,"user");
-       CreateUserInDataBase();
- 
- 
-   })
-     .catch((error) => {
-       const errorCode = error.code;
-       const errorMessage = error.message;
-       console.log(errorCode,errorMessage,"error");
-      //  setCreadential({...Creadential,message:errorCode.split("/")[1]})
-       
-   }); 
- }
-// Login User
-const verifyCredential=async()=>{
-  console.log("i am in verifyCredential")
-   const res= await signInWithEmailAndPassword(auth, Registration.Email, Registration.Password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user.email,"user");
-      FetchData(user.email);
+         createUserWithEmailAndPassword(auth,email,password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user,"user");
+          CreateUserInDataBase();
+    
+      })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode,errorMessage,"error");
+          setCreadential({...Creadential,message:errorCode.split("/")[1]})
+          
+      }); 
+    }
+    // Login User
+    const verifyCredential=async()=>{
+      console.log("i am in verifyCredential")
+       const res= await signInWithEmailAndPassword(auth, Creadential.email, Creadential.Password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user.email,"user");
+          FetchData(user.email);
+          
+          Navigate("/")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode,errorMessage,"err");
+          setCreadential({...Creadential,message:errorCode.split("/")[1]})
+    
+        });
       
-      Navigate("/")
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode,errorMessage,"err");
-      // setCreadential({...Creadential,message:errorCode.split("/")[1]})
-
-    });
-  
-}
+    }
+console.log(LoggedInUserData)
 
 
-
-
-console.log(UserData,"User Data");
-console.log(Registration);
-console.log(isAuthorized,"isAuthorized")
 
   return (
-    <Context.Provider value={{Registration,setRegistration,UserData, setUserData,AllProduct,createUser,verifyCredential,isAuthorized,setisAuthorized}} >
+    <User.Provider value={{Creadential,setCreadential,createUser,verifyCredential,LoggedInUserData,setLoggedInUserData}}>
+
       <Navbar/>
       <Router/>
-      </Context.Provider >
+      </User.Provider >
     
   );
 }

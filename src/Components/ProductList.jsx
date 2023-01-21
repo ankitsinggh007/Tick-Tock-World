@@ -1,11 +1,13 @@
 import classes from "./ProductList.module.css";
 // import { Link } from "react-router-dom";
 import products from "../products";
+import { useNavigate } from "react-router-dom";
 
 const Productlist = ({ headingTitle, productType,attribute }) => {
   
-
+  const Navigate=useNavigate();
   const popularProducts =
+  
     productType === "new" ? products.slice(0, 4) : products.slice(8, 12);
     console.log(popularProducts,"popularProducts")
   return (
@@ -17,7 +19,7 @@ const Productlist = ({ headingTitle, productType,attribute }) => {
       <div className={classes.productConatiner}>
         {popularProducts.map(({ image, title }, i) => {
           return (
-            <div className={classes.item} key={i}>
+            <div className={classes.item} key={i} onClick={()=>{Navigate("/ProductAll")}}>
                     <img
                       src={image}
                       className={classes.cardImage}

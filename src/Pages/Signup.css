@@ -14,11 +14,16 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .Logo_register{
-    /* border-radius: 50%; */
+    border-radius: 50%;
 }
 
 .Register div{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+@media screen and (max-width:750px) {
+    .Register{
+        width: auto;
+    }
 }

@@ -8,37 +8,39 @@ import {HiShoppingCart} from "react-icons/hi"
 import {BsFillHeartFill} from "react-icons/bs"
 import classes from "./Navbar.module.css"
 import Logo from "../Media/watchLogo.png"
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Context from '../ContextAPI'
+import { User } from '../App';
 function Navbar() {
-  const {Registration,setRegistration,UserData, setUserData,isAuthorized,setisAuthorized}=useContext(Context);
+  const {LoggedInUserData,setLoggedInUserData} = useContext(User)
+ 
   const Toggle=()=>{
-    if(isAuthorized){
-      setUserData({
+    if(LoggedInUserData.isAuthrized){
+      setLoggedInUserData({
         Firstname:"",
         Email:"",
         Wishlist:[],
-        Cart:[]
+        Cart:[],
+        isAuthrized:false
       })
-      setisAuthorized(false);
     }
   }
-  console.log(isAuthorized,"isAuthorized")
   return (
     <div className={classes.container}>
-        <span><img src={Logo} height={"70rem"}/></span>
+        <NavLink to="/"><img src={Logo} className={classes.image}/></NavLink>
       
       <div className={classes.items}>
-        <div>Products</div>
-        <div><BsFillHeartFill fontSize={".8em"} style={{marginTop:"7px"}}/></div>
-        <div><HiShoppingCart fontSize={".8em"} style={{marginTop:"7px"}}/></div>
+        <NavLink  to="/ProductAll" style={{textDecoration:"none",color :"white"}}>Products</NavLink>
+        <NavLink className={classes.icon_set} to="/wishlist" style={{textDecoration:"none",color :"white"}}><span className={classes.iconsName}>Wishlist &nbsp; </span><BsFillHeartFill fontSize={"1em"} style={{marginTop:"3px"}}/></NavLink>
+        <NavLink to="/cart " className={classes.icon_set} style={{textDecoration:"none",color :"white"}}><span className={classes.iconsName}>Cart &nbsp;</span><HiShoppingCart fontSize={"1.2em"} style={{marginTop:"7px"}}/></NavLink>
 
-        <Link to={"/login"} onClick={Toggle} style={{color:"white",textDecorationLine:"none"}}>{isAuthorized?<Avatar
+        <Link to={"/signup"} onClick={Toggle} style={{color:"white",textDecorationLine:"none"}}>{LoggedInUserData.isAuthrized?<Avatar
   sx={{ bgcolor: deepOrange[500] }}
-  alt={UserData.Firstname}
+  alt={LoggedInUserData.firstname}
   src="/broken-image.jpg"
+  
 />
-:"Log In/Register"}</Link>
+:"Sign Up"}</Link>
       </div>
     </div>
   )

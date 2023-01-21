@@ -16,30 +16,49 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import tbc from "../Media/watchLogo.png"
 import { Button } from '@mui/material';
 import classes from "./Login.module.css"
-import Context from '../ContextAPI';
-import { Link } from 'react-router-dom';
 function Login() {
     const [showPassword, setShowPassword] = useState(false)
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const {Registration,setRegistration,verifyCredential}=useContext(Context);
+    const {Creadential, setCreadential,createUser,verifyCredential}=useContext(User);
     const [Message, setMessage] = useState("")
 
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    verifyCredential()
-  }
+  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+     if(Creadential.email!==""){
+      if(regex.test(Creadential.email)){
+        if(Creadential.Password!==""){
+          verifyCredential(); 
+        }
+        else{
+          setMessage("fill password");
+        }
+      }else{
+        setMessage("fill valid email");
+      }
+
+     }
+     else{
+      setMessage("fill email");
+     }    
+  };
 
   return (
     
     <form onSubmit={handleSubmit} className={classes.form}>
           <span className={classes.Logo} ><img className={classes.img} src={tbc} height="60px" width="60px"/></span>
+          {Message.length != 0 && <Alert color="danger">
+                        {Message}
+                    </Alert>}
         <FormControl sx={{ m: 1, width: '35ch' }} variant="standard">
         <InputLabel htmlFor="input-with-icon-adornment">
           With a start adornment
         </InputLabel>
         <Input
-          onChange={(e)=>{setRegistration({...Registration,Email:e.target.value})}}
+        className={classes.input}
+          onChange={(e)=>{setCreadential({...Creadential,email:e.target.value})}}
           id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">
@@ -52,7 +71,9 @@ function Login() {
       <FormControl sx={{ m: 1, width: '35ch' }} variant="standard">
           <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
           <Input
-           onChange={(e)=>{setRegistration({...Registration,Password:e.target.value})}}
+        className={classes.input}
+
+           onChange={(e)=>{setCreadential({...Creadential,Password:e.target.value})}}
             id="standard-adornment-password"
             type={showPassword ? 'text' : 'password'}
             endAdornment={
@@ -70,11 +91,10 @@ function Login() {
           
         </FormControl>
       <br />
-      <div >
-          <Button type='submit' variant="contained" style={{backgroundColor:"#161619",marginLeft:"37%",padding:"5px",fontSize:"1.2rem"}}>Log In</Button>
+      <div className={classes.buttonbox} >
+          <Button type='submit' style={{backgroundColor:"black",marginLeft:"20px"}} variant="contained">Log In</Button>
         
           </div>
-          <Link to="/signup" style={{marginTop:"20px"}}>New to the site? Register</Link>
     </form>
   );
 }

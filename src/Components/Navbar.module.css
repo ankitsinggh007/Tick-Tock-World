@@ -2,7 +2,6 @@
     color: aliceblue;
     height: 10px;
     display: flex;
-    width: 94%;
     margin:auto;
     flex-direction: row;
     align-items: center;
@@ -10,6 +9,9 @@
     padding: 35px;
     background: rgb(65,65,65);
     
+}
+.image{
+    height:4rem;
 }
 .items{
     cursor: pointer;
@@ -20,4 +22,22 @@
     width: 40%;
 }
 
-
+.icon_set{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:max-content;
+    justify-content: space-between;
+}
+@media screen and (max-width:790px) {
+    .iconsName{
+        display: none;
+    }
+    .items{
+        width: 70%;
+    }
+    .image{
+        height: 3rem;
+    }
+    
+}

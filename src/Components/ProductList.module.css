@@ -19,6 +19,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform: translate(0px ,0px);
+    transition: all .5s ease-in-out;
     
 }
 .text{
@@ -36,4 +38,17 @@
     box-shadow: rgba( #1366EC 0.35) 0px 5px 15px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     padding: 5px;
+}
+.item:hover{
+    transform: translate(5px,-5px);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+@media screen and (max-width: 768px){
+    .label{
+        top: 2px;
+        left: 2px;
+        font-size: .8em;
+        padding: 1px;
+    }
+    
 }
