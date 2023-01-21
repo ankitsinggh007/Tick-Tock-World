@@ -85,7 +85,7 @@ const Slide=(props)=>{
   if(props?.Category==="image"){
     return (
       <div className={classes.container}>
-        <Slider {...settings} style={{height:"70vh"}}>
+        <Slider {...settings} style={{height:"70vh",marginBottom:"20px"}}>
           {
             props.data.map((slide, index)=>{
               return (
