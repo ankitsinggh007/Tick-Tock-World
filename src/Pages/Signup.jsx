@@ -11,6 +11,7 @@ function Signup() {
 const [Message, setMessage] = useState("")
 const [rePassword, setrePassword] = useState("")
 const {Creadential, setCreadential,createUser}=useContext(User);
+const letter= /^[A-Za-z]+$/;
 const verifyData=(e)=>{
   e.preventDefault();
   const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -78,6 +79,8 @@ const verifyData=(e)=>{
 
 
   return (
+    <div className='bo'>
+
     <form className='Register' onSubmit={verifyData}>
           <div  ><img className='Logo_register' src={tbc} height="60px" width="60px"/>
           </div>
@@ -85,7 +88,7 @@ const verifyData=(e)=>{
                         {Message}
                     </Alert>}
 <div className='name'>
-<TextField id="outlined-search" label="First Name" onChange={(e)=>{setCreadential({...Creadential,fname:e.target.value})}} type="text" />
+<TextField id="outlined-search" label="First Name"  onChange={(e)=>{setCreadential({...Creadential,fname:e.target.value})}} type="text" />
 <TextField id="outlined-search" label="Last Name" onChange={(e)=>{setCreadential({...Creadential,lname:e.target.value})}} type="text" />
 </div>
 <div>
@@ -117,6 +120,7 @@ const verifyData=(e)=>{
 </div>
     
   </form>
+  </div>
   )
 }
 

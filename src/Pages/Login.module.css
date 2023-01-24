@@ -8,12 +8,20 @@
     flex-direction: column;
     justify-content: space-evenly;
     border-radius: 15px;
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
+    background-color: rgba(255, 255, 255, 0.5);
 }
 .input{
     /* padding: 40px; */
     width: 80%;
+}
+.body{
+    border: 1px solid black;
+    height: 90vh;
+    background-image: url("../Media/Banner2.png");
+background-position: center;
+
 }
 
 .Logo{
@@ -37,5 +45,9 @@
  .input{
     width:60%;
  }
- 
+ .body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position: center; */
+}
 }

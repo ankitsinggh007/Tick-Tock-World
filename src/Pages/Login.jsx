@@ -46,6 +46,7 @@ function Login() {
   };
 
   return (
+    <div className={classes.body}>
     
     <form onSubmit={handleSubmit} className={classes.form}>
           <span className={classes.Logo} ><img className={classes.img} src={tbc} height="60px" width="60px"/></span>
@@ -58,6 +59,7 @@ function Login() {
         </InputLabel>
         <Input
         className={classes.input}
+        required
           onChange={(e)=>{setCreadential({...Creadential,email:e.target.value})}}
           id="input-with-icon-adornment"
           startAdornment={
@@ -75,6 +77,7 @@ function Login() {
 
            onChange={(e)=>{setCreadential({...Creadential,Password:e.target.value})}}
             id="standard-adornment-password"
+            
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
@@ -96,6 +99,7 @@ function Login() {
         
           </div>
     </form>
+    </div>
   );
 }
 

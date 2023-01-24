@@ -11,7 +11,12 @@
     
 }
 .image{
-    height:4rem;
+    height:5.2rem;
+}
+.title{
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .items{
     cursor: pointer;

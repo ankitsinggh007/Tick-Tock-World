@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div className={classes.container}>
         <NavLink to="/"><img src={Logo} className={classes.image}/></NavLink>
-      
+      <div className={classes.title}>Watch Store</div>
       <div className={classes.items}>
         <NavLink  to="/ProductAll" style={{textDecoration:"none",color :"white"}}>Products</NavLink>
         <NavLink className={classes.icon_set} to="/wishlist" style={{textDecoration:"none",color :"white"}}><span className={classes.iconsName}>Wishlist &nbsp; </span><BsFillHeartFill fontSize={"1em"} style={{marginTop:"3px"}}/></NavLink>

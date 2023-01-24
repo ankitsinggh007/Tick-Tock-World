@@ -5,6 +5,8 @@
     height: 70vh;
     min-height: 32vh;
     min-width: 25%;
+    background-color: rgba(255, 255, 255, 0.5);
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,6 +18,12 @@
 .Logo_register{
     border-radius: 50%;
 }
+.bo{
+    height: 90vh;
+    background-image: url("../Media/Banner3.png");
+background-position: center;
+
+}
 
 .Register div{
     display: flex;
@@ -25,5 +33,10 @@
 @media screen and (max-width:750px) {
     .Register{
         width: auto;
+    }
+    .bo{
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* background-position: center; */
     }
 }

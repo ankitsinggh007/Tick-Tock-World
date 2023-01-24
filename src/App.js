@@ -44,6 +44,7 @@ function App() {
         lastName:Creadential.lname,
         Gender:Creadential.Gender,
       }); 
+      alert(`you are registered`);
       Navigate("/login")
      }
     // Create User
@@ -71,6 +72,7 @@ function App() {
           const user = userCredential.user;
           console.log(user.email,"user");
           FetchData(user.email);
+          alert("you are logged in successfully")
           
           Navigate("/")
         })
@@ -79,7 +81,7 @@ function App() {
           const errorMessage = error.message;
           console.log(errorCode,errorMessage,"err");
           setCreadential({...Creadential,message:errorCode.split("/")[1]})
-    
+          alert(`${errorCode.split("/")[1]}`)
         });
       
     }

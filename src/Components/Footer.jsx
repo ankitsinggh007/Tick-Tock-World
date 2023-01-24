@@ -19,18 +19,9 @@ const Footer = () => {
         </div>
         <div className={classes.copyright}>
             <div className={classes.social}>
-                <span className={classes.cap}>Follow Us</span>
-            
-           <div className={classes.icon}>
-           <SocialIcon url="https://twitter.com" />
-            <SocialIcon url="https://facebook.com" />
-            <SocialIcon url="https://instagram.com" />
-            <SocialIcon url="https://youtube.com" />
-           </div>
-           <span>
+                
           &#169; Copyright 2022-present.
 
-           </span>
             </div>
 
         </div>
@@ -44,10 +35,6 @@ const Footer = () => {
           <p>Cancellation Policy</p>
         </div>
         <div className="col-sm-3 margin-auto">
-          <h3 className="f-s mb-m">Contact</h3>
-          <p>Adress XXX/YYY/ZZZ</p>
-          <p>+91X-XXX-XXX </p>
-          <p>© 2022, Monika & Poornima</p>
         </div>
       </div>
     </>
